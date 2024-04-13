@@ -4,7 +4,7 @@ import { useAuth } from '../context/AuthContext';
 
 
 const ProfileScreen = () => {
-  const { authState, onLogout } = useAuth();
+  const { authState } = useAuth();
 
   useEffect(() => {
    
@@ -16,9 +16,13 @@ const ProfileScreen = () => {
       {authState.authenticated && authState.user && (
         <View style={styles.container}>
           
-          
           <View style={styles.circulo}>
-          <Text style={styles.logo}>{authState.user.name.substring(0, 1)}{authState.user.apellido.substring(0, 1)}</Text>
+
+          <Text style={styles.logo}>
+            {authState.user.name && authState.user.name.substring(0, 1)}
+            {authState.user.apellido && authState.user.apellido.substring(0, 1)}
+          </Text>
+
           </View>
           <View style={styles.info}>
             <Text style={styles.name}>{authState.user.name} {authState.user.apellido}</Text>
